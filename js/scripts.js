@@ -1,8 +1,12 @@
-//business logic for vacationList
-function vacationList() {
+//business logic for VacationList
+function VacationList() {
   this.places = [];
   this.currentId = 0;
 
+}
+
+VacationList.prototype.addPlace = function(place) {
+  this.places.push(place);
 }
 
 
@@ -24,3 +28,8 @@ console.log(place1);
 console.log(place2);
 console.log(place1.landmarks);
 console.log(place2.landmarks);
+
+var vacationList = new VacationList();
+vacationList.addPlace(place1);
+vacationList.addPlace(place2);
+console.log(vacationList.places[0]);

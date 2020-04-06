@@ -6,10 +6,14 @@ function VacationList() {
 }
 
 VacationList.prototype.addPlace = function(place) {
+  place.id = this.assignId();
   this.places.push(place);
 }
 
-
+VacationList.prototype.assignId = function() {
+  this.currentId += 1;
+  return this.currentId;
+}
 
 
 

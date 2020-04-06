@@ -64,6 +64,8 @@ $(document).ready(function() {
     var place = new Place(location, landmarks, season, food);
     console.log(place);
     vacationList.addPlace(place);
+    var selectedPlace = vacationList.findPlace(place.id);
+    $(".locations").append("<li>" + selectedPlace.location + "</li>");
     
     /* console.log(vacationList);
     $(".locations").append("<li>" + vacationList.places[0].location + "</li>");

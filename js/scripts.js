@@ -1,3 +1,15 @@
+//business logic for vacationList
+function vacationList() {
+  this.places = [];
+  this.currentId = 0;
+
+}
+
+
+
+
+
+
 //business logic for places objects 
 function Place (location, landmarks, season, food) {
   this.location = location;

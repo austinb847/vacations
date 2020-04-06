@@ -38,13 +38,21 @@ console.log(vacationList.places[0]); */
 
 //UI logic
 $(document).ready(function() {
+  var vacationList = new VacationList();
+  
   $("#vacationForm").submit(function(event) {
     event.preventDefault();
     var location = $("#location").val(); 
-    var landmarks = $("#landmarks").val();
+    var landmarks = $("#landmarks").val().split(",");
     var season = $("#season").val();
     var food = $("#food").val();    
     
+    
+    console.log(vacationList);
+    var place = new Place(location, landmarks, season, food);
+    console.log(place);
+    vacationList.addPlace(place);
+    console.log(vacationList);
     
 
   });

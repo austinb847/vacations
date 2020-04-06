@@ -15,6 +15,18 @@ VacationList.prototype.assignId = function() {
   return this.currentId;
 }
 
+VacationList.prototype.findPlace = function(id) {
+  for (i=0; i < this.places.length; i++) {
+    if (this.places[i].id) {
+      if (this.places[i].id === id){
+        return this.places[i];
+      }
+    }
+  };
+  return false;
+}
+
+
 
 //business logic for places objects 
 function Place (location, landmarks, season, food) {
@@ -39,7 +51,7 @@ console.log(vacationList.places[0]); */
 //UI logic
 $(document).ready(function() {
   var vacationList = new VacationList();
-  
+
   $("#vacationForm").submit(function(event) {
     event.preventDefault();
     var location = $("#location").val(); 
@@ -52,8 +64,10 @@ $(document).ready(function() {
     var place = new Place(location, landmarks, season, food);
     console.log(place);
     vacationList.addPlace(place);
-    console.log(vacationList);
     
+    /* console.log(vacationList);
+    $(".locations").append("<li>" + vacationList.places[0].location + "</li>");
+    console.log(vacationList.places[0].location); */
 
   });
 });

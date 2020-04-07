@@ -52,12 +52,7 @@ console.log(vacationList.places[0]); */
 $(document).ready(function() {
   var vacationList = new VacationList();
 
-  /* var liProps = function(event) {
-    console.log(event.data.param1);
-  } */
-
   
-
   $("#vacationForm").submit(function(event) {
     event.preventDefault();
 
@@ -73,11 +68,20 @@ $(document).ready(function() {
     console.log(place);
     vacationList.addPlace(place);
     var selectedPlace = vacationList.findPlace(place.id);
-    $(".locations").append("<li id="+ selectedPlace.id  + ">" + selectedPlace.location + "</li>");      //.click({param1: selectedPlace}, liProps);
+    $(".locations").append("<li id="+ selectedPlace.id  + ">" + selectedPlace.location + "</li>")  //.click({param1: selectedPlace}, liProps);
     
     /* console.log(vacationList);
     $(".locations").append("<li>" + vacationList.places[0].location + "</li>");
     console.log(vacationList.places[0].location); */
 
   });
+
+  //bind click event to ul which is the parent of li elements.
+  $(".locations").on('click', 'li' , function(event) {
+    var liId = parseInt($(this).attr("id")); //get id of clicked li element
+    var selectedPlace = vacationList.findPlace(liId); // use id to get properties from object
+    
+  });
+
+  
 });

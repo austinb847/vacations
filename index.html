@@ -9,26 +9,33 @@
   </head>
   <body>
     <div class="container">
-      <h1>Vacation Tracker</h1>
       <form id="vacationForm">
+        <h3>Vacation Tracker</h3>
         <div class="form-group">
           <label for="location">Location:</label>
-          <input id="location" type="text">
+          <input id="location" type="text" class="form-control">
         </div>
         <div class="form-group">
           <label for="landmarks">Landmarks:</label>
-          <input id="landmarks" type="text">
+          <input id="landmarks" type="text" class="form-control">
         </div>
         <div class="form-group">
           <label for="season">Season:</label>
-          <input id="season" type="text">
+          <input id="season" type="text" class="form-control">
         </div>
         <div class="form-group">
           <label for="food">Favorite food:</label>
-          <input id="food" type="text">
+          <input id="food" type="text" class="form-control">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
+      <div class="itemPanel">
+        <ul class="locations">
+        </ul>
+        <button id= "btnShow" class="btn btn-primary">Add to List</button>
+      </div>
+      <div class="panel panel-info">
+      </div>
     </div>
   </body>
 </html>

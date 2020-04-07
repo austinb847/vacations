@@ -52,8 +52,16 @@ console.log(vacationList.places[0]); */
 $(document).ready(function() {
   var vacationList = new VacationList();
 
+  /* var liProps = function(event) {
+    console.log(event.data.param1);
+  } */
+
+  
+
   $("#vacationForm").submit(function(event) {
     event.preventDefault();
+
+    
     var location = $("#location").val(); 
     var landmarks = $("#landmarks").val().split(",");
     var season = $("#season").val();
@@ -65,7 +73,7 @@ $(document).ready(function() {
     console.log(place);
     vacationList.addPlace(place);
     var selectedPlace = vacationList.findPlace(place.id);
-    $(".locations").append("<li>" + selectedPlace.location + "</li>");
+    $(".locations").append("<li id="+ selectedPlace.id  + ">" + selectedPlace.location + "</li>");      //.click({param1: selectedPlace}, liProps);
     
     /* console.log(vacationList);
     $(".locations").append("<li>" + vacationList.places[0].location + "</li>");

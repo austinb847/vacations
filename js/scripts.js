@@ -36,22 +36,25 @@ function Place (location, landmarks, season, food) {
   this.food = food;
 }
 
-/* var place1 = new Place("seattle", ["pikes place", "rock museum", "space needle"], "summer", "seafood");
-var place2 = new Place("hungary", ["balaton", "old church", "downtown budapest"], "fall", "goulash");
-console.log(place1);
-console.log(place2);
-console.log(place1.landmarks);
-console.log(place2.landmarks);
-
-var vacationList = new VacationList();
-vacationList.addPlace(place1);
-vacationList.addPlace(place2);
-console.log(vacationList.places[0]); */
-
 //UI logic
 $(document).ready(function() {
   var vacationList = new VacationList();
 
+  var showProperties = function(selectedPlaceObj) {
+    var panel = $(".panel");
+    panel.html("<div class='panel-heading panel-custom'>" +
+                  "<h2 class='panel-title'>" + selectedPlaceObj.location + "</h2>" +
+                "</div>" +
+                "<div class='panel-body'>" +
+                  "<p>Trip Details:</p>" +
+                  "<ul>" +
+                    "<li>" + selectedPlaceObj.season + "</li>" +
+                    "<li>" + selectedPlaceObj.food + "</li>" +
+                  "</ul>" +
+                "</div>");
+    panel.toggle();
+
+  };
   
   $("#vacationForm").submit(function(event) {
     event.preventDefault();
@@ -68,8 +71,10 @@ $(document).ready(function() {
     console.log(place);
     vacationList.addPlace(place);
     var selectedPlace = vacationList.findPlace(place.id);
-    $(".locations").append("<li id="+ selectedPlace.id  + ">" + selectedPlace.location + "</li>")  //.click({param1: selectedPlace}, liProps);
-    
+    $(".locations").append("<li id="+ selectedPlace.id  + ">" + selectedPlace.location + "</li>") 
+    $("#vacationForm").toggle();
+    $("#btnShow").toggle();
+    $(".itemPanel").toggle();
     /* console.log(vacationList);
     $(".locations").append("<li>" + vacationList.places[0].location + "</li>");
     console.log(vacationList.places[0].location); */
@@ -80,7 +85,16 @@ $(document).ready(function() {
   $(".locations").on('click', 'li' , function(event) {
     var liId = parseInt($(this).attr("id")); //get id of clicked li element
     var selectedPlace = vacationList.findPlace(liId); // use id to get properties from object
+    console.log(selectedPlace);
+    showProperties(selectedPlace);
     
+  });
+
+  $("#btnShow").click(function() {
+    $("#vacationForm").toggle();
+    $("#btnShow").toggle();
+    $(".itemPanel").toggle();
+    $(".panel").hide();
   });
 
   
